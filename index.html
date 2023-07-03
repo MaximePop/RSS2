@@ -1,172 +1,192 @@
 <!DOCTYPE html>
 <html>
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RSS Flux Eveille</title>
-    <link rel="stylesheet" href="style.css" />
-    <title>Automatic RSS Feeds</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/rss-parser/dist/rss-parser.min.js"></script>
-    <script src="https://www.zotero.org/support/dev/client_api/citationstyleresults.js"></script>
-    
-    
-  </head>
-    <style>
-
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-span,
-div,
-table,
-th,
-td {
-  font-family: "Times New Roman", Times, serif;
-}
-
-body {
-  background-color: #016633;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  opacity: 0;
-  animation: fadeIn 1s ease-in-out forwards;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-
-      .navbar {
-        background-color: #333; /* Dark gray background color */
-        color: #fff; /* White text color */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        width: 100%;
-        text-decoration: none;
-        margin-right: 10px;
-        padding: 10px;
-      }
-
-      h1 {
-        font-weight: bold; /* Make the title bold */
-        margin-top: 30px;
-      }
-
-      .container {
-        width: 100%;
-        max-width: 1100px;
-        margin-top: 20px;
-        background-color: #fff; /* White background color */
-        border-radius: 10px;
-        padding: 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-    }
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RSS Flux Eveille</title>
+  <link rel="stylesheet" href="style.css" />
+  <title>Automatic RSS Feeds</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/rss-parser/dist/rss-parser.min.js"></script>
+  <script src="https://www.zotero.org/support/dev/client_api/citationstyleresults.js"></script>
 
 
-
-      th {
-        text-align: left;
-      }
-
-      .category-title {
-        font-weight: bold; /* Make the category title bold */
-        margin: 10px 0; /* Add some margin below the category title */
-        color: #000; /* Black text color for the category title */
-      }
-
-      .article-title {
-        color: #0a6d00; /* Dark green color for the article title */
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .article-title:hover {
-        color: #076a00; /* Darker green color on hover */
-      }
-
-      .image-container {
-        display: flex;
-        justify-content: center;
-        margin: 20px 0;
-      }
-
-      .image-container img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .footer {
-        background-color: #333; /* Dark gray background color */
-        color: #fff; /* White text color */
-        padding: 10px;
-        text-align: center;
-        margin-top: 20px; /* Add margin to the top of the footer */
-        width: 100%;
-        transition: transform 0.3s;
-    }
-
- 
-      .footer a {
-        color: #fff; /* White text color for footer links */
-        text-decoration: none;
-      }
-
-      .project-container {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 20px;
-      }
-
-      .project-container h2 {
-        font-weight: bold;
-      }
-
-      .project-image {
-        max-width: 200px;
-        height: auto;
-      }
-
-    .left-image {
-    position: absolute;
-    top: 20px; /* Adjust the vertical position as needed */
-    width: 100px; /* Adjust the width of the images */
-    height: auto; /* Maintain aspect ratio */
+</head>
+<style>
+  body,
+  h1,
+  h2,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  span,
+  div,
+  table,
+  th,
+  td {
+    font-family: "Times New Roman", Times, serif;
   }
 
-  .right-image {
-    position: absolute;
-    top: 20px; /* Adjust the vertical position as needed */
-    width: 100px; /* Adjust the width of the images */
-    height: auto; /* Maintain aspect ratio */
+  body {
+    background-color: #016633;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  .navbar {
+    background-color: #333;
+    /* Dark gray background color */
+    color: #fff;
+    /* White text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 100%;
+    text-decoration: none;
+    margin-right: 10px;
+    padding: 10px;
+  }
+
+  h1 {
+    font-weight: bold;
+    /* Make the title bold */
+    margin-top: 30px;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1100px;
+    margin-top: 20px;
+    background-color: #fff;
+    /* White background color */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+
+
+
+  th {
+    text-align: left;
+  }
+
+  .category-title {
+    font-weight: bold;
+    /* Make the category title bold */
+    margin: 10px 0;
+    /* Add some margin below the category title */
+    color: #000;
+    /* Black text color for the category title */
+  }
+
+  .article-title {
+    color: #0a6d00;
+    /* Dark green color for the article title */
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .article-title:hover {
+    color: #076a00;
+    /* Darker green color on hover */
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  .image-container img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .footer {
+    background-color: #333;
+    /* Dark gray background color */
+    color: #fff;
+    /* White text color */
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    /* Add margin to the top of the footer */
+    width: 100%;
+    transition: transform 0.3s;
+  }
+
+
+  .footer a {
+    color: #fff;
+    /* White text color for footer links */
+    text-decoration: none;
+  }
+
+  .project-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  .project-container h2 {
+    font-weight: bold;
+  }
+
+  .project-image {
+    max-width: 200px;
+    height: auto;
   }
 
   .left-image {
-    left: 20px; /* Adjust the horizontal position as needed */
+    position: absolute;
+    top: 20px;
+    /* Adjust the vertical position as needed */
+    width: 100px;
+    /* Adjust the width of the images */
+    height: auto;
+    /* Maintain aspect ratio */
   }
 
   .right-image {
-    right: 20px; /* Adjust the horizontal position as needed */
+    position: absolute;
+    top: 20px;
+    /* Adjust the vertical position as needed */
+    width: 100px;
+    /* Adjust the width of the images */
+    height: auto;
+    /* Maintain aspect ratio */
+  }
+
+  .left-image {
+    left: 20px;
+    /* Adjust the horizontal position as needed */
+  }
+
+  .right-image {
+    right: 20px;
+    /* Adjust the horizontal position as needed */
   }
 
   table {
@@ -179,6 +199,8 @@ body {
     border: 1px solid black;
     text-align: center;
     padding: 5px;
+    width: 300px;
+    height: 100px;
   }
 
   /* Default styles for all screens */
@@ -191,7 +213,8 @@ body {
   @media (min-width: 1100px) {
     body {
       max-width: 1100px;
-      margin: 0 auto; /* Center the content horizontally */
+      margin: 0 auto;
+      /* Center the content horizontally */
     }
   }
 
@@ -199,7 +222,8 @@ body {
   @media (max-width: 960px) {
     body {
       max-width: 960px;
-      margin: 0 auto; /* Center the content horizontally */
+      margin: 0 auto;
+      /* Center the content horizontally */
     }
   }
 
@@ -209,32 +233,31 @@ body {
 
 
   .container1 {
-  background-color: #fff
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+  }
 
-    }
 
+  .button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: transparent;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    position: relative;
+  }
 
-.button {
-  display: inline-block;
-  border-radius: 4px;
-  background-color: transparent;
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 20px;
-  padding: 10px;
-  width: 200px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
-  position : relative;
-}
-
-.button span {
+  .button span {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -244,605 +267,1371 @@ body {
   }
 
 
-.button span:after {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: opacity 0.5s; /* Add transition for smooth fade-in effect */
-}
+  .button span:after {
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: opacity 0.5s;
+    /* Add transition for smooth fade-in effect */
+  }
 
-.button:hover span:after {
-  opacity: 1;
-  right: 0;
-}
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
-.button:hover span {
-  padding-right: 25px;
-}
+  .button:hover span {
+    padding-right: 25px;
+  }
 
 
-.button img {
+  .button img {
     transition: transform 0.3s;
-    
+
   }
 
   .button:hover img {
     transform: scale(1.1);
   }
 
-ul#itemList1 {
-      color: white !important;
-    }
+  ul#itemList1 {
+    color: white !important;
+  }
 
-.section {
-  margin-top: 20px;
-  padding-top: 10px;
-  border-top: none; /* Supprimer la bordure supérieure */
-}
-
-
-    h3 {
-            color: #000;
-            font-size: 18px;
-            font-weight: bold;
-            transition: transform 0.3s;
-        }
-
-        /* Effet d'hover */
-        h3:hover {
-            transform: scale(1.1);
-        }
-
-h4 {
-  color:black;
-  font-size: 50px;
-}
-
-.container2 {
-        background-color: white;
-        padding: 10px;
-        text-align: center;
-        margin-top: 20px;
-        width: 100%;
-        border: 2px solid #016633;
-        border-style: solid; /* Ajoutez cette ligne pour spécifier le style de bordure */
-      }
-
-    .container2 {
-      margin: 20px;
-    }
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-    li {
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: black;
-    }
-    input[type="text"] {
-      padding: 5px;
-      font-size: 14px;
-      margin-right: 10px;
-    }
-    button {
-      padding: 5px 10px;
-      font-size: 14px;
-    }
+  .section {
+    margin-top: 20px;
+    padding-top: 10px;
+    border-top: none;
+    /* Supprimer la bordure supérieure */
+  }
 
 
-.container3 {
-  background-color: white;
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
-  border: 2px solid #063D5D;
-}
+  h3 {
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s;
+    font-weight: normal;
+    margin-bottom: 20px;
+    font-family: "Fuse Regular", sans-serif;
+    /* Appliquer la police Fuse Regular */
+
+  }
+
+  /* Effet d'hover */
+  h3:hover {
+    transform: scale(1.1);
+  }
+
+  h4 {
+    color: black;
+    font-size: 50px;
+  }
+
+  .container2 {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid #016633;
+    border-style: solid;
+    /* Ajoutez cette ligne pour spécifier le style de bordure */
+  }
+
+  .container2 {
+    margin: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: black;
+  }
+
+  input[type="text"] {
+    padding: 5px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+  button {
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+
+
+  .container3 {
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid #063D5D;
+  }
 
   .container4 {
-  background-color: white;
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
-  border: 2px solid #3EBBAD;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid #3EBBAD;
 
-    }
+  }
 
 
   .container5 {
-  background-color: white;
-  padding: 10px;
-  text-align: center;
-  margin-top: 20px;
-  width: 100%;
-  border: 2px solid #0C704B;
-
-
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+    border: 2px solid #0C704B;
+  }
+ 
   .autres-projets {
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
   }
 
   .projects-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.project {
-  flex: 1;
-  text-align: center;
-}
-
-.image-container1,
-.image-container2 {
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.image-container1 {
-  left: 10%;
-}
-
-.image-container2 {
-  right: 0;
-}
-
-.image-container1:hover .left-image,
-.image-container2:hover .right-image {
-  position: static;
-}
-
-h5 {
-  font-family: "Times New Roman", Times, serif;
-  font-size: 14px;
-  color: black;
-}
-
-
-
-
-.link {
-    display: none; /* Masquer les liens */
+    display: flex;
+    justify-content: space-between;
   }
 
-    /* Réinitialisation des marges et des espaces */
-    body, h4 {
-        margin: 0;
-        padding: 0;
-    }
+  .project {
+    flex: 1;
+    text-align: center;
+  }
 
-h3.link {
-  margin: 0;
-}
+  .image-container1,
+  .image-container2 {
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .image-container1 {
+    left: 10%;
+  }
+
+  .image-container2 {
+    right: 0;
+  }
+
+  .image-container1:hover .left-image,
+  .image-container2:hover .right-image {
+    position: static;
+  }
+
+  h5 {
+    font-family: "Times New Roman", Times, serif;
+    font-size: 14px;
+    color: black;
+  }
 
 
-.right-button {
+
+
+  /* .link {
+    display: none;
+    /* Masquer les liens */
+  } */
+
+  /* Réinitialisation des marges et des espaces */
+  /* body, */
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
+
+  h3.link {
+    margin: 0;
+
+  }
+
+
+  .right-button {
     position: absolute;
     top: 0;
     right: 0;
   }
 
   h6 {
-            color: #000;
-            font-size: 18px;
-            font-weight: bold;
-            
-        }
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
 
-        h6:hover {
+  }
+
+  h6:hover {
     /* Réinitialiser les styles d'hover */
     color: inherit;
     text-decoration: none;
   }
 
 
+  .subheading {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 40px;
+  }
+
+
+  .table-cell {
+    padding: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .table-cell:hover {
+    background-color: white;
+    border: 2px solid #FF8C22;
+  }
+
+  .table-cell:hover h3 {
+    color: black;
+  }
+
+  .table-cell .subheading {
+    color: white;
+  }
+
+  .table-cell:hover .subheading {
+    color: black;
+  }
+
+  #close-icon {
+    font-size: 24px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  #search-bar {
+    margin-bottom: 10px;
+  }
+
+  #results {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: black;
+  }
+
+  #keyword-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: black;
+  }
+
+  .keyword {
+    margin: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    color: black;
+    cursor: pointer;
+  }
+
+  .pagination1 {
+    /* display: flex; */
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .pagination1 button {
+    margin: 0 5px;
+  }
+
+  .page-number {
+    color: #000;
+  }
+
 </style>
 
 
 </head>
+
 <body>
-    <div class="navbar">
-        <a href="#" style="color: #fff;">Accueil</a>
-        <a href="#" style="color: #fff;">À propos</a>
-        <a href="#" style="color: #fff;">Contact</a>
-    </div>
-    
-    <div class="section">
-      <h4 style="text-align: center; color:black;">Présentation de la page de rapprochement</h4>
-      <h4 style="text-align: center; color: black;">entre les initiatives Digit_Hum et EVEille</h4>
-        <a href="https://digithum.huma-num.fr/" target="_blank" class="button">
-          <div>
-            <img src="https://i.ibb.co/KwmSNsK/digit-hum.png" alt="">
-          </a>
-          <span></span> 
-          <p>La recherche en humanités et sciences sociales est de plus en plus liée aux techniques du numérique et aux problématiques de diffusion des données sur le Web. Le besoin d’échanger sur les différents usages qui sont faits des humanités numériques et de structurer ces nouvelles pratiques à l'échelle de l'École normale supérieure et de l'Université Paris Sciences et Lettres est à l'origine de Digit_Hum.
-            Ce site constitue une archive des humanités numériques en train de se faire et s'adresse aux chercheurs, ingénieurs, bibliothécaires, étudiants ou toute personne intéressée par ce domaine en évolution constante.
-            Cette initiative collective est portée à l'ENS par le CAPHÉS (Marie-Laure Massot) et AOROC (Agnès Tricoche), en collaboration avec Julien Cavero (MOM).</p> 
-        </a>
-      </div>
+  <div class="navbar">
+    <a href="#" style="color: #fff;">Accueil</a>
+    <a href="#" style="color: #fff;">À propos</a>
+    <a href="#" style="color: #fff;">Contact</a>
+  </div>
 
-    
-        
-      <div class="section">
-        <a href="https://eveille.hypotheses.org/" target="_blank" class="button">
-          <div>
-            <img src="https://i.ibb.co/nmV1VhG/Capture-d-cran-2023-06-27-164305-1.png" alt="">
-          </a>
-          <span></span>    
-        </a>
-      </div>
-
-    
-
-    <h1 class="project-title"></h1>
-    <div class="project-description">
-        <p>
-            Le projet EVEille (Exploration et Valorisation Electroniques des corpus En SHS) a pour objectif premier d’accompagner les jeunes chercheur.e.s ou les chercheur.e.s confirmé.e.s qui souhaitent s’initier aux Humanités au sein de pratiques de recherche nouvelles ou engagées de longue date.
-        </p>
-        <p>
-            Il entend développer progressivement une réflexion collective critique sur les enjeux épistémologiques du virage du “tout-numérique” à l’heure actuelle, dans le monde académique notamment, afin de faire de l’outillage un réel lieu de réflexion sur les pratiques de la recherche, les visées et les orientations implicites introduites par le recours au traitement numérique des corpus.
-        </p>
-    </div>
-</body>
-    </div>
-    <div class="container">
-        <h1>Les flux RSS du projet EVEille</h1>
-        <style>
-            h1 {
-                color: black;
-            }
-        </style>
+  </div>
+  <div class="container">
+    <h1>Les flux RSS du projet EVEille</h1>
+    <style>
+      h1 {
+        color: black;
+      }
+    </style>
 
 
-        
+
     <div class="section">
 
       <div style="font-family: 'Times New Roman', Times, serif;">
-        <h6 style="margin-bottom: 20px; font-size: 16px;; margin-top: 30px; color: black;">L'équipe EVEille propose des flux RSS triés par mots-clés.</h6>
+        <h6 style="margin-bottom: 20px; font-size: 16px;; margin-top: 10px; color: black;">L'équipe EVEille propose des
+          flux RSS triés par mots-clés.</h6>
       </div>
-    
-        <table>
-          <tr>
-            <td>
-            <h3 class="link" onclick="openLinksInNewTab('itemList2')">Analyse</h3> 
+
+      <table>
+        <tr>
+          <td class="table-cell" style="background-color: #FF8C22; color: white;">
+            <h3 class="link" onclick="openLinksInPopup('itemList2')" onmouseover="changeColor(this)">Analyse</h3>
             <ul id="itemList2" style="display: none;">
-              <h3>Analyse du web</h3> 
+              <li><h1>Analyse du web</h1></li>
               <ul id="itemList3"></ul>
-              <h3>Analyse et traitement sémantique</h3>
+              <li><h1>Analyse et traitement sémantique</h1></li>
               <ul id="itemList4"></ul>
             </td>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList5')">Annotation collaborative</h3>
-              <ul id="itemList5" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList6')">Bibliothèque numérique</h3>
-              <ul id="itemList6" style="display: none;">
-              
-            </td>
-            <td>
-            <h3 class="link" onclick="openLinksInNewTab('itemList7')">Cartographie et visualisation</h3>
-              <ul id="itemList7" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList8')">Diffusion</h3>
-              <ul id="itemList8" style="display: none;">
-            </td>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList9')">Ecosophie</h3>
-              <ul id="itemList9" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList10')">Ecriture</h3>
-              <ul id="itemList10" style="display: none;">
-            </td>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList11')">Edition numérique</h3>
-              <ul id="itemList11" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList12')">Transcription</h3>
-              <ul id="itemList12" style="display: none;">
-            </td>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList13')">Enseignement, formation et recherche</h3>
-              <ul id="itemList13" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList14')">Histoire, philosophie et controverse</h3>
-              <ul id="itemList14" style="display: none;">
-            </td>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList15')">Ingénierie</h3>
-              <ul id="itemList15" style="display: none;">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <h3 class="link" onclick="openLinksInNewTab('itemList16')">Manifestations</h3>
-              <ul id="itemList16" style="display: none;">
-            </td>
-            <td>
+          <td class="table-cell" style="background-color: #5FB236; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList5')" onmouseover="changeColor(this)">Annotation collaborative</h3>
+            <ul id="itemList5" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: orange; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList6')" onmouseover="changeColor(this)">Bibliothèque
+              numérique</h3>
+            <ul id="itemList6" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: #029980; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList7')" onmouseover="changeColor(this)">Cartographie et
+              visualisation</h3>
+            <ul id="itemList7" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: red; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList8')" onmouseover="changeColor(this)">Diffusion</h3>
+            <ul id="itemList8" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: yellow; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList9')" onmouseover="changeColor(this)">Ecosophie</h3>
+            <ul id="itemList9" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: pink; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList10')" onmouseover="changeColor(this)">Ecriture</h3>
+            <ul id="itemList10" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: #576DD9; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList11')" onmouseover="changeColor(this)">Edition numérique
+            </h3>
+            <ul id="itemList11" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: gray; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList12')" onmouseover="changeColor(this)">Transcription</h3>
+            <ul id="itemList12" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: teal; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList13')" onmouseover="changeColor(this)">
+              Enseignement,formation et recherche</h3>
+            <ul id="itemList13" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: #A289E5; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList14')" onmouseover="changeColor(this)">Histoire,
+              philosophie et controverse</h3>
+            <ul id="itemList14" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: darkgreen; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList15')" onmouseover="changeColor(this)">Ingénierie</h3>
+            <ul id="itemList15" style="display: none;"></ul>
+          </td>
+        </tr>
+        <tr>
+          <td class="table-cell" style="background-color: darkorange; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList16')" onmouseover="changeColor(this)">Manifestations
+            </h3>
+            <ul id="itemList16" style="display: none;"></ul>
+          </td>
+          <td class="table-cell" style="background-color: blue; color: white; padding: 10px;">
+            <h3 class="link" onclick="openLinksInPopup('itemList17')" onmouseover="changeColor(this)">Science ouverte
+            </h3>
+            <ul id="itemList17" style="display: none;">
+              <li><h1>Base de données</h1></li>
+              <ul id="itemList18"></ul>
+              <li><h1>Stockage/Archivage</h1></li>
+              <ul id="itemList19"></ul>
+          </td>
+        </tr>
+      </table>
 
-              <h3 class="link" onclick="openLinksInNewTab('itemList17')">Science ouverte</h3> 
-              <ul id="itemList17" style="display: none;">
-                <h3>Base de donnée</h3> 
-                <ul id="itemList18"></ul>
-                <h3>Stcokage/Archivage</h3>
-                <ul id="itemList19"></ul>
-              </td>
-            </td>
-          </tr>
-        </table>
-      
-        
+      <!-- <h1>Recherche par mots-clés</h1>
+      <input type="text" id="search-bar" placeholder="Recherche">
+      <button id="search-button">Recherche</button>
+      <h1>Résultats</h1>
+      <div id="pagination"></div>
+      <div id="results"></div> -->
 
-<script>
-         const parser = new RSSParser(); // Initialize the RSS Parser
+      <h1>Items de la collection Zotero</h1>
+      <input type="text" id="searchInput" placeholder="Rechercher par titre">
+      <button onclick="searchItems()">Rechercher</button>
+      <h1>Résultats</h1>
+      <ul id="myItemList1"></ul>
+      <div class="pagination1">
+        <button onclick="updatePage('previous')">Précédent</button>
+        <span id="currentPage"></span>
+        <button onclick="updatePage('next')">Suivant</button>
+        <h1>Mots-clés</h1>
+        <div id="keyword-cloud"></div>
+        <h1>Tags de la collection Zotero</h1>
+        <div id="tagList"></div>
+        <h1>Items associés</h1>
+        <ul id="myItemList"></ul>
+      </div>
 
-function generateRSS() {
-    const feedData = [
-        {
-            category: 'Jardin de la poésie',
-            url: 'https://versunjardin.hypotheses.org/feed'
-        },
-        {
-            category: 'La roue à livres',
-            url: 'https://rouealivres.hypotheses.org/feed'
-        },
-        {
-            category: 'Olio',
-            url: 'https://olio.hypotheses.org/feed'
-        },
-        {
-            category: 'Estrades',
-            url: 'https://estrades.hypotheses.org/feed'
-        }
-    ];
 
-    const rssArticles1 = document.getElementById('rssArticles1');
-    const rssArticles2 = document.getElementById('rssArticles2');
-    const rssArticles3 = document.getElementById('rssArticles3');
-    const rssArticles4 = document.getElementById('rssArticles4');
+      <script>
+        const parser = new RSSParser(); // Initialize the RSS Parser
 
-    const fetchAndProcess = (category, url, articlesContainer) => {
-        parser.parseURL(url, (err, feed) => {
-            if (err) {
+        function generateRSS() {
+          const feedData = [
+            {
+              category: 'Jardin de la poésie',
+              url: 'https://versunjardin.hypotheses.org/feed'
+            },
+            {
+              category: 'La roue à livres',
+              url: 'https://rouealivres.hypotheses.org/feed'
+            },
+            {
+              category: 'Olio',
+              url: 'https://olio.hypotheses.org/feed'
+            },
+            {
+              category: 'Estrades',
+              url: 'https://estrades.hypotheses.org/feed'
+            }
+          ];
+
+          const rssArticles1 = document.getElementById('rssArticles1');
+          const rssArticles2 = document.getElementById('rssArticles2');
+          const rssArticles3 = document.getElementById('rssArticles3');
+          const rssArticles4 = document.getElementById('rssArticles4');
+
+          const fetchAndProcess = (category, url, articlesContainer) => {
+            parser.parseURL(url, (err, feed) => {
+              if (err) {
                 articlesContainer.innerHTML = 'Erreur lors du chargement du flux RSS.';
                 return;
-            }
+              }
 
-            const items = feed.items;
+              const items = feed.items;
 
-            if (items.length > 0) {
+              if (items.length > 0) {
                 const rssItems = items.map(item => {
-                    const itemTitle = item.title;
-                    const itemLink = item.link;
-                    return `
+                  const itemTitle = item.title;
+                  const itemLink = item.link;
+                  return `
                         <li>
                             <a href="${itemLink}" class="article-title">${itemTitle}</a>
                         </li>
                     `;
                 }).join('');
-
                 articlesContainer.innerHTML = `<ul>${rssItems}</ul>`;
-            } else {
+              } else {
                 articlesContainer.innerHTML = 'Aucun article trouvé.';
-            }
-        });
-    };
+              }
+            });
+          };
 
-    feedData.forEach(feed => {
-        switch (feed.category) {
-            case 'Jardin de la poésie':
+          feedData.forEach(feed => {
+            switch (feed.category) {
+              case 'Jardin de la poésie':
                 fetchAndProcess(feed.category, feed.url, rssArticles1);
                 break;
-            case 'La roue à livres':
+              case 'La roue à livres':
                 fetchAndProcess(feed.category, feed.url, rssArticles2);
                 break;
-            case 'Olio':
+              case 'Olio':
                 fetchAndProcess(feed.category, feed.url, rssArticles3);
                 break;
-            case 'Estrades':
+              case 'Estrades':
                 fetchAndProcess(feed.category, feed.url, rssArticles4);
                 break;
-        }
-    });
-}
-
-generateRSS();
-
-function searchArticles() {
-    const keyword = document.getElementById('keywordInput').value.toLowerCase();
-    const searchResults = [];
-
-    const processSearchResults = (category, articlesContainer) => {
-        const articles = articlesContainer.getElementsByTagName('li');
-        for (let i = 0; i < articles.length; i++) {
-            const article = articles[i];
-            const articleTitle = article.getElementsByTagName('a')[0].textContent.toLowerCase();
-            const articleLink = article.getElementsByTagName('a')[0].getAttribute('href');
-            if (articleTitle.includes(keyword)) {
-                searchResults.push({
-                    category: category,
-                    title: articleTitle,
-                    link: articleLink
-                });
             }
+          });
         }
-    };
 
-    const rssArticlesContainers = [
-        { category: 'Jardin de la poésie', container: rssArticles1 },
-        { category: 'La roue à livres', container: rssArticles2 },
-        { category: 'Olio', container: rssArticles3 },
-        { category: 'Estrades', container: rssArticles4 }
-    ];
+        generateRSS();
 
-    rssArticlesContainers.forEach(rssContainer => {
-        processSearchResults(rssContainer.category, rssContainer.container);
-    });
+        function searchArticles() {
+          const keyword = document.getElementById('keywordInput').value.toLowerCase();
+          const searchResults = [];
 
-    displaySearchResults(searchResults);
-}
+          const processSearchResults = (category, articlesContainer) => {
+            const articles = articlesContainer.getElementsByTagName('li');
+            for (let i = 0; i < articles.length; i++) {
+              const article = articles[i];
+              const articleTitle = article.getElementsByTagName('a')[0].textContent.toLowerCase();
+              const articleLink = article.getElementsByTagName('a')[0].getAttribute('href');
+              if (articleTitle.includes(keyword)) {
+                searchResults.push({
+                  category: category,
+                  title: articleTitle,
+                  link: articleLink
+                });
+              }
+            }
+          };
 
-function displaySearchResults(results) {
-    const searchResultsContainer = document.getElementById('searchResults');
-    let searchResultsHTML = '';
+          const rssArticlesContainers = [
+            { category: 'Jardin de la poésie', container: rssArticles1 },
+            { category: 'La roue à livres', container: rssArticles2 },
+            { category: 'Olio', container: rssArticles3 },
+            { category: 'Estrades', container: rssArticles4 }
+          ];
 
-    if (results.length > 0) {
-        searchResultsHTML += '<ul>';
-        results.forEach(result => {
-            searchResultsHTML += `
+          rssArticlesContainers.forEach(rssContainer => {
+            processSearchResults(rssContainer.category, rssContainer.container);
+          });
+
+          displaySearchResults(searchResults);
+        }
+
+        function displaySearchResults(results) {
+          const searchResultsContainer = document.getElementById('searchResults');
+          let searchResultsHTML = '';
+
+          if (results.length > 0) {
+            searchResultsHTML += '<ul>';
+            results.forEach(result => {
+              searchResultsHTML += `
                 <li>
                     <span class="category">${result.category}</span>:
                     <a href="${result.link}" class="article-title">${result.title}</a>
                 </li>
             `;
-        });
-        searchResultsHTML += '</ul>';
-    } else {
-        searchResultsHTML = 'Aucun résultat trouvé.';
-    }
-
-    searchResultsContainer.innerHTML = searchResultsHTML;
-
-}
-function fetchZoteroCollection(collectionUrl, targetElementId) {
-    fetch(collectionUrl)
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(item => {
-                var title = item.data.title;
-                var url = item.data.url;
-
-                var listItem = document.createElement('li');
-                listItem.innerHTML = '<a href="' + url + '">' + title + '</a>';
-
-                document.getElementById(targetElementId).appendChild(listItem);
             });
-        })
-        .catch(error => console.log(error));
-}
+            searchResultsHTML += '</ul>';
+          } else {
+            searchResultsHTML = 'Aucun résultat trouvé.';
+          }
 
-function createSubCollection(parentCollectionId, parentCollectionKey, subCollectionTitle) {
-    var apiKey = 'yQraJQogHA89BHu3VJBKXLha';  // Replace with your Zotero API key
+          searchResultsContainer.innerHTML = searchResultsHTML;
 
-    var apiUrl = 'https://api.zotero.org/users/9668586/collections?key=' + apiKey;
-    var userID = '9668586';  // Replace with your Zotero user ID
+        }
 
-    var data = {
-        'name': subCollectionTitle,
-        'parentCollection': parentCollectionId
-    };
 
-    fetch(apiUrl.replace('9668586', userID), {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
+        function fetchZoteroCollection(collectionUrl, targetElementId) {
+  fetch(collectionUrl)
     .then(response => response.json())
-    .then(subCollection => {
-        console.log('Subcollection created:', subCollection);
+    .then(data => {
+      data.forEach(item => {
+        var title = item.data.title;
+        var url = item.data.url;
+
+        var listItem = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = url;
+        link.textContent = title;
+        link.target = '_blank'; // Open the link in a new tab
+        listItem.appendChild(link);
+
+        document.getElementById(targetElementId).appendChild(listItem);
+      });
     })
     .catch(error => console.log(error));
 }
 
-var apiKey = 'yQraJQogHA89BHu3VJBKXLha';  // Replace with your Zotero API key
 
-var collectionUrls = [
-    'https://api.zotero.org/users/9668586/collections/8PHW6BAG/items/top?v=3&key=' + apiKey,  // Analyse et traitement sémantique
-    'https://api.zotero.org/users/9668586/collections/SMTFXD66/items/top?v=3&key=' + apiKey,  // Analyse du web (subcollection)
-    'https://api.zotero.org/users/9668586/collections/NUFHR9J3/items/top?v=3&key=' + apiKey,  // Analyse et traitement sémantique (subcollection)
-    'https://api.zotero.org/users/9668586/collections/BNWSQQWJ/items/top?v=3&key=' + apiKey,  // Annotation collaboratif
-    'https://api.zotero.org/users/9668586/collections/7FUX4CMB/items/top?v=3&key=' + apiKey,  // Bibliothèque numérique
-    'https://api.zotero.org/users/9668586/collections/N3NVZA75/items/top?v=3&key=' + apiKey,  // Cartographie et visualisation
-    'https://api.zotero.org/users/9668586/collections/8E8H4TF7/items/top?v=3&key=' + apiKey,  // Diffusion
-    'https://api.zotero.org/users/9668586/collections/22Z66JU7/items/top?v=3&key=' + apiKey,  // Ecosophie
-    'https://api.zotero.org/users/9668586/collections/AS663FZC/items/top?v=3&key=' + apiKey,  // Ecriture
-    'https://api.zotero.org/users/9668586/collections/2Z8DVDUV/items/top?v=3&key=' + apiKey,  // Edition numérique
-    'https://api.zotero.org/users/9668586/collections/BRXJDSG4/items/top?v=3&key=' + apiKey,  // Transcription
-    'https://api.zotero.org/users/9668586/collections/ZX4H5G27/items/top?v=3&key=' + apiKey,  // Enseignement, formation, recherche
-    'https://api.zotero.org/users/9668586/collections/284A3JK5/items/top?v=3&key=' + apiKey,  // Histoire philosophie controverse
-    'https://api.zotero.org/users/9668586/collections/XVHABQ5P/items/top?v=3&key=' + apiKey,  // Ingénierie
-    'https://api.zotero.org/users/9668586/collections/BHDKDGB5/items/top?v=3&key=' + apiKey,  // Manifestations
-    'https://api.zotero.org/users/9668586/collections/5BCUGMKP/items/top?v=3&key=' + apiKey,  // Sciences ouvertes
-    'https://api.zotero.org/users/9668586/collections/UU2DPQJS/items/top?v=3&key=' + apiKey,  // Base de données (subcollection)
-    'https://api.zotero.org/users/9668586/collections/N8GGXUG6/items/top?v=3&key=' + apiKey,  // Stockage archivage (subcollection)
-    'https://api.zotero.org/users/9668586/collections/8WRX2F9V/items/top?v=3&key=' + apiKey   // Veille
-];
+        function createSubCollection(parentCollectionId, parentCollectionKey, subCollectionTitle) {
+          var apiKey = 'yQraJQogHA89BHu3VJBKXLha';  // Replace with your Zotero API key
 
-collectionUrls.forEach((collectionUrl, index) => {
-    fetchZoteroCollection(collectionUrl, 'itemList' + (index + 2));
-});
+          var apiUrl = 'https://api.zotero.org/users/9668586/collections?key=' + apiKey;
+          var userID = '9668586';  // Replace with your Zotero user ID
 
-document.addEventListener("DOMContentLoaded", function() {
-    const imageContainers = document.querySelectorAll(".image-container");
+          var data = {
+            'name': subCollectionTitle,
+            'parentCollection': parentCollectionId
+          };
 
-    imageContainers.forEach(imageContainer => {
-        imageContainer.addEventListener("mouseover", function() {
-            this.classList.add("hovered");
+          fetch(apiUrl.replace('9668586', userID), {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          })
+            .then(response => response.json())
+            .then(subCollection => {
+              console.log('Subcollection created:', subCollection);
+            })
+            .catch(error => console.log(error));
+        }
+
+        var apiKey = 'yQraJQogHA89BHu3VJBKXLha';  // Replace with your Zotero API key
+
+        var collectionUrls = [
+          'https://api.zotero.org/users/9668586/collections/8PHW6BAG/items/top?v=3&key=' + apiKey,  // Analyse et traitement sémantique
+          'https://api.zotero.org/users/9668586/collections/SMTFXD66/items/top?v=3&key=' + apiKey,  // Analyse du web (subcollection)
+          'https://api.zotero.org/users/9668586/collections/NUFHR9J3/items/top?v=3&key=' + apiKey,  // Analyse et traitement sémantique (subcollection)
+          'https://api.zotero.org/users/9668586/collections/BNWSQQWJ/items/top?v=3&key=' + apiKey,  // Annotation collaborative
+          'https://api.zotero.org/users/9668586/collections/7FUX4CMB/items/top?v=3&key=' + apiKey,  // Bibliothèque numérique
+          'https://api.zotero.org/users/9668586/collections/N3NVZA75/items/top?v=3&key=' + apiKey,  // Cartographie et visualisation
+          'https://api.zotero.org/users/9668586/collections/8E8H4TF7/items/top?v=3&key=' + apiKey,  // Diffusion
+          'https://api.zotero.org/users/9668586/collections/22Z66JU7/items/top?v=3&key=' + apiKey,  // Ecosophie
+          'https://api.zotero.org/users/9668586/collections/AS663FZC/items/top?v=3&key=' + apiKey,  // Ecriture
+          'https://api.zotero.org/users/9668586/collections/2Z8DVDUV/items/top?v=3&key=' + apiKey,  // Edition numérique
+          'https://api.zotero.org/users/9668586/collections/BRXJDSG4/items/top?v=3&key=' + apiKey,  // Transcription
+          'https://api.zotero.org/users/9668586/collections/ZX4H5G27/items/top?v=3&key=' + apiKey,  // Enseignement, formation, recherche
+          'https://api.zotero.org/users/9668586/collections/284A3JK5/items/top?v=3&key=' + apiKey,  // Histoire philosophie controverse
+          'https://api.zotero.org/users/9668586/collections/XVHABQ5P/items/top?v=3&key=' + apiKey,  // Ingénierie
+          'https://api.zotero.org/users/9668586/collections/BHDKDGB5/items/top?v=3&key=' + apiKey,  // Manifestations
+          'https://api.zotero.org/users/9668586/collections/5BCUGMKP/items/top?v=3&key=' + apiKey,  // Sciences ouvertes
+          'https://api.zotero.org/users/9668586/collections/UU2DPQJS/items/top?v=3&key=' + apiKey,  // Base de données (subcollection)
+          'https://api.zotero.org/users/9668586/collections/N8GGXUG6/items/top?v=3&key=' + apiKey,  // Stockage archivage (subcollection)
+          'https://api.zotero.org/users/9668586/collections/8WRX2F9V/items/top?v=3&key=' + apiKey   // Veille
+        ];
+
+        collectionUrls.forEach((collectionUrl, index) => {
+          fetchZoteroCollection(collectionUrl, 'itemList' + (index + 2));
         });
 
-        imageContainer.addEventListener("mouseout", function() {
-            this.classList.remove("hovered");
+        document.addEventListener("DOMContentLoaded", function () {
+          const imageContainers = document.querySelectorAll(".image-container");
+
+          imageContainers.forEach(imageContainer => {
+            imageContainer.addEventListener("mouseover", function () {
+              this.classList.add("hovered");
+            });
+
+            imageContainer.addEventListener("mouseout", function () {
+              this.classList.remove("hovered");
+            });
+          });
+        });
+
+        window.addEventListener('DOMContentLoaded', function () {
+          var itemListIds = ['itemList1', 'itemList2', 'itemList3', 'itemList4', 'itemList5', 'itemList6', 'itemList7', 'itemList8', 'itemList9', 'itemList10', 'itemList11', 'itemList12', 'itemList13', 'itemList14', 'itemList15', 'itemList16', 'itemList17', 'itemList18', 'itemList19', 'itemList20'];
+          for (var i = 0; i < itemListIds.length; i++) {
+            var itemList = document.getElementById(itemListIds[i]);
+            if (itemList) {
+              itemList.addEventListener('click', function (event) {
+                var target = event.target;
+                if (target.tagName === 'A') {
+                  target.setAttribute('target', '_blank');
+                }
+              });
+            }
+          }
+        });
+
+        function openLinksInPopup(itemListId) {
+  var itemList = document.getElementById(itemListId).innerHTML;
+
+  // Create a div element to display the content of the links
+  var popupContent = document.createElement('div');
+  popupContent.innerHTML = itemList;
+
+  // Add styles to the content div
+  popupContent.style.backgroundColor = '#fff'; // Container background color: white
+  popupContent.style.color = '#000'; // Text color: black
+  popupContent.style.margin = '0';
+  popupContent.style.padding = '0';
+
+  // Create a div for the pop-up window
+  var popupWindow = document.createElement('div');
+  popupWindow.style.position = 'fixed';
+  popupWindow.style.top = '0';
+  popupWindow.style.right = '0';
+  popupWindow.style.width = '300px';
+  popupWindow.style.height = '50%';
+  popupWindow.style.backgroundColor = '#f0f0f0'; // Pop-up window background color: light gray
+  popupWindow.style.color = '#000'; // Text color: black
+  popupWindow.style.overflowY = 'auto'; // Enable vertical scrolling if needed
+  popupWindow.style.resize = 'both'; // Enable resizing
+  popupWindow.style.zIndex = '999'; // Set a higher z-index for draggable behavior
+
+  // Create a close button
+  var closeButton = document.createElement('button');
+  closeButton.innerHTML = 'x';
+  closeButton.style.float = 'right';
+  closeButton.style.margin = '10px';
+
+  // Create a div for the close button and the content
+  var popupContainer = document.createElement('div');
+  popupContainer.appendChild(closeButton);
+  popupContainer.appendChild(popupContent);
+
+  // Add the content and close button div to the pop-up window
+  popupWindow.appendChild(popupContainer);
+
+  // Add the pop-up window to the main page
+  document.body.appendChild(popupWindow);
+
+  // Add a click event listener to the close button
+  closeButton.addEventListener('click', function () {
+    // Remove the pop-up window from the main page
+    document.body.removeChild(popupWindow);
+  });
+
+  // Make the pop-up window draggable
+  dragElement(popupWindow);
+
+  // Function to make an element draggable
+  function dragElement(element) {
+    var pos1 = 0,
+      pos2 = 0,
+      pos3 = 0,
+      pos4 = 0;
+    element.onmousedown = dragMouseDown;
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      element.style.top = element.offsetTop - pos2 + 'px';
+      element.style.left = element.offsetLeft - pos1 + 'px';
+    }
+
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Add click event listeners to each hyperlink in the pop-up content
+    var links = popupContent.querySelectorAll('a');
+    links.forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default link behavior
+            var url = link.getAttribute('href'); // Get the URL from the href attribute
+            window.open(url, '_blank'); // Open the link in a new tab
+        });
+    });
+
+    // Add event listener for category links
+    var categories = document.querySelectorAll('.link');
+    categories.forEach(function(category) {
+        category.addEventListener('click', function() {
+            var itemListId = this.getAttribute('data-itemlist');
+            openLinksInNewTab(itemListId);
         });
     });
 });
 
-window.addEventListener('DOMContentLoaded', function() {
-            var itemListIds = ['itemList1', 'itemList2', 'itemList3', 'itemList4', 'itemList5', 'itemList6', 'itemList7', 'itemList8', 'itemList9', 'itemList10', 'itemList11', 'itemList12', 'itemList13', 'itemList14', 'itemList15', 'itemList16', 'itemList17', 'itemList18', 'itemList19', 'itemList20'];
-            for (var i = 0; i < itemListIds.length; i++) {
-                var itemList = document.getElementById(itemListIds[i]);
-                if (itemList) {
-                    itemList.addEventListener('click', function(event) {
-                        var target = event.target;
-                        if (target.tagName === 'A') {
-                            target.setAttribute('target', '_blank');
-                        }
-                    });
-                }
-            }
-        });
-       
-        function openLinksInNewTab(itemListId) {
-  var itemList = document.getElementById(itemListId).innerHTML;
-  var newWindow = window.open('', '_blank');
-  newWindow.document.write('<html><head><title></title><style>body { background-color: #016633; color: #fff; margin: 0; padding: 0; } .container { width: 100%; max-width: 1100px; margin: 20px auto; background-color: #fff; border-radius: 10px; padding: 20px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); } h3 { color: #000; }</style></head><body style="background-color: #016633;"><div class="container">' + itemList + '</div></body></html>');
-  newWindow.document.close();
+
+
+
+  // Adjust the size of the pop-up window based on the number of items
+  var windowHeight = popupContent.offsetHeight + 60; // Add extra space for the close button
+  popupWindow.style.height = windowHeight + 'px';
 }
 
 
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var categories = document.querySelectorAll('.link');
-    categories.forEach(function(category) {
-      category.addEventListener('click', function() {
-        var itemListId = this.getAttribute('data-itemlist');
-        openLinksInNewTab(itemListId);
-      });
-    });
+
+        function changeColor(element) {
+          if (element.style.color === 'white') {
+            element.style.color = 'black';
+          } else {
+            element.style.color = 'white';
+          }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+          var categories = document.querySelectorAll('.link');
+          categories.forEach(function (category) {
+            category.addEventListener('click', function () {
+              var itemListId = this.getAttribute('data-itemlist');
+              openLinksInNewTab(itemListId);
+            });
+          });
+        });
+
+        // Fetches the Zotero collection data and filters the items based on the provided keywords
+        function searchZoteroCollection(keywords, allItems) {
+          // Count the word frequency in the titles
+          const wordFreqMap = {};
+          allItems.forEach(item => {
+            const itemTitle = item.data.title.toLowerCase();
+            const words = itemTitle.split(/\s+/);
+            words.forEach(word => {
+              if (!["a", "an", "the"].includes(word)) {
+                if (wordFreqMap[word]) {
+                  wordFreqMap[word]++;
+                } else {
+                  wordFreqMap[word] = 1;
+                }
+              }
+            });
+          });
+
+          // Sort the words by frequency (descending order)
+          const sortedWords = Object.keys(wordFreqMap).sort((a, b) => wordFreqMap[b] - wordFreqMap[a]);
+
+          // Display the 20 most frequent words in the keyword cloud
+          const keywordCloudElement = document.getElementById("keyword-cloud");
+          keywordCloudElement.innerHTML = "";
+          const maxSize = 30;
+          const minSize = 14;
+          const maxCount = wordFreqMap[sortedWords[0]];
+          const minCount = wordFreqMap[sortedWords[sortedWords.length - 1]];
+          sortedWords.slice(0, 20).forEach((word, index) => {
+            const count = wordFreqMap[word];
+            const fontSize = ((count - minCount) / (maxCount - minCount)) * (maxSize - minSize) + minSize;
+            const keywordElement = document.createElement("span");
+            keywordElement.classList.add("keyword");
+            keywordElement.style.fontSize = `${fontSize}px`;
+            keywordElement.textContent = word;
+            keywordCloudElement.appendChild(keywordElement);
+          });
+
+          // Filter the items based on the keywords in the titles
+          let filteredItems = allItems;
+          if (keywords.length > 0 && keywords[0].toLowerCase() !== "tout") {
+            filteredItems = allItems.filter(item => {
+              const itemTitle = item.data.title.toLowerCase();
+              return keywords.some(keyword => itemTitle.includes(keyword.toLowerCase()));
+            });
+          }
+
+          // Display the titles with hyperlinks of the filtered items
+          const resultsElement = document.getElementById("results");
+          resultsElement.innerHTML = "";
+
+          if (filteredItems.length === 0) {
+            resultsElement.textContent = "No results found.";
+          } else {
+            filteredItems.forEach(item => {
+              const itemTitle = item.data.title;
+              const itemURL = item.data.url;
+              const linkElement = document.createElement("a");
+              linkElement.href = itemURL;
+              linkElement.textContent = itemTitle;
+              linkElement.target = "_blank";
+              resultsElement.appendChild(linkElement);
+              resultsElement.appendChild(document.createElement("br"));
+            });
+          }
+        }
+
+        // Fetch all items in the Zotero collection
+        function fetchAllItems(limit) {
+          const apiKey = "yQraJQogHA89BHu3VJBKXLha";
+          const collectionId = "TEJRE3BW";
+          const apiUrl = `https://api.zotero.org/users/9668586/collections/${collectionId}/items?start=0&limit=${limit}&key=${apiKey}`;
+
+          return fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              if (data.length === limit) {
+                return fetchAllItemsRecursive(apiKey, collectionId, data, limit);
+              } else {
+                return data;
+              }
+            })
+            .catch(error => {
+              console.error("Error:", error);
+              return [];
+            });
+        }
+
+        // Fetches the remaining items in the Zotero collection recursively
+        function fetchAllItemsRecursive(apiKey, collectionId, items, start, limit) {
+          const apiUrl = `https://api.zotero.org/users/9668586/collections/${collectionId}/items?start=${start}&limit=${limit}&key=${apiKey}`;
+
+          return fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+              const allItems = items.concat(data);
+              if (data.length === limit) {
+                return fetchAllItemsRecursive(apiKey, collectionId, allItems, start + limit, limit);
+              } else {
+                return allItems;
+              }
+            })
+            .catch(error => {
+              console.error("Error:", error);
+              return items;
+            });
+        }
+
+        // Fetches the Zotero collection data and filters the items based on the provided keywords
+        function searchZoteroCollection(keywords, allItems, limit) {
+          // Filter the items based on the keywords in the titles
+          let filteredItems = allItems;
+          if (keywords.length > 0 && keywords[0].toLowerCase() !== "tout") {
+            filteredItems = allItems.filter(item => {
+              const itemTitle = item.data.title.toLowerCase();
+              return keywords.some(keyword => itemTitle.includes(keyword.toLowerCase()));
+            });
+          }
+
+          // Display the titles with hyperlinks of the filtered items
+          const resultsElement = document.getElementById("results");
+          resultsElement.innerHTML = "";
+
+          const itemsPerPage = 20;
+          const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+          let currentPage = 1;
+
+          // Display the results of the first page
+          displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+
+          // Create the pagination
+          createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+        }
+
+        function displayResults(page, itemsPerPage, filteredItems, resultsElement) {
+          const startIndex = (page - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          const currentPageResults = filteredItems.slice(startIndex, endIndex);
+
+          currentPageResults.forEach(item => {
+            const itemTitle = item.data.title;
+            const itemURL = item.data.url;
+            const linkElement = document.createElement("a");
+            linkElement.href = itemURL;
+            linkElement.textContent = itemTitle;
+            linkElement.target = "_blank";
+            resultsElement.appendChild(linkElement);
+            resultsElement.appendChild(document.createElement("br"));
+          });
+        }
+
+        // function createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement) {
+        //   const paginationElement = document.getElementById("pagination");
+        //   paginationElement.innerHTML = "";
+
+        //   for (let i = 1; i <= totalPages; i++) {
+        //     const pageButton = document.createElement("button");
+        //     pageButton.textContent = i;
+
+        //     if (i === currentPage) {
+        //       pageButton.disabled = true;
+        //     }
+
+        //     pageButton.addEventListener("click", () => {
+        //       currentPage = i;
+        //       resultsElement.innerHTML = "";
+        //       displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+        //     });
+
+        //     paginationElement.appendChild(pageButton);
+        //   }
+        // }
+
+        // Event listener for the search button
+        // const searchButton = document.getElementById("search-button");
+        // searchButton.addEventListener("click", () => {
+        //   const keywords = document.getElementById("search-bar").value.trim().split(" ");
+        //   const limit = 100; // Set the desired limit of results per page
+        //   fetchAllItems(limit).then(data => searchZoteroCollection(keywords, data, limit));
+        // });
+
+        // Event listener for the search bar to trigger search on Enter key press
+        // const searchInput = document.getElementById("search-bar");
+        // searchInput.addEventListener("keyup", (event) => {
+        //   if (event.keyCode === 13) {
+        //     const keywords = searchInput.value.trim().split(" ");
+        //     const limit = 100; // Set the desired limit of results per page
+        //     fetchAllItems(limit).then(data => searchZoteroCollection(keywords, data, limit));
+        //   }
+        // });
+
+        // Fetch all items in the Zotero collection and display the initial keyword cloud
+        const limit = 100; // Set the desired limit of results per page
+        fetchAllItems(limit).then(data => searchZoteroCollection([], data, limit));
+
+        // Function to handle keyword click event
+        function handleKeywordClick(keyword) {
+          // Set the keyword in the search bar
+          document.getElementById("searchInput").value = keyword;
+
+          // Trigger search button click event
+          document.getElementById("search-button").click();
+        }
+
+        const initialKeywords = [
+  "numériques",
+  "humanités",
+  "digit_hum",
+  "sciences",
+  "text",
+  "introduction",
+  "recherche",
+  "bibliothèques",
+  "histoire",
+  "sociales",
+  "humaines",
+  "tutoriel",
+  "analyse",
+  "atelier",
+  "cours",
+  "documentation",
+  "ressources"
+];
+
+const keywordCloudElement = document.getElementById("keyword-cloud");
+keywordCloudElement.innerHTML = "";
+
+const maxSize = 30;
+const minSize = 14;
+
+// Sort the keywords in alphabetical order
+initialKeywords.sort();
+
+initialKeywords.forEach((keyword, index) => {
+  // Randomly generate the count for demonstration purposes
+  const count = Math.floor(Math.random() * 100);
+
+  const fontSize = ((count - 1) / 99) * (maxSize - minSize) + minSize;
+
+  const keywordElement = document.createElement("span");
+  keywordElement.classList.add("keyword");
+  keywordElement.style.fontSize = `${fontSize}px`;
+  keywordElement.style.color = "blue";
+  keywordElement.style.textDecoration = "underline";
+  keywordElement.textContent = keyword;
+
+  keywordElement.addEventListener("click", () => {
+    handleKeywordClick(keyword);
   });
 
+  keywordElement.addEventListener("mouseover", () => {
+    keywordElement.style.fontWeight = "bold";
+  });
+
+  keywordElement.addEventListener("mouseout", () => {
+    keywordElement.style.fontWeight = "normal";
+  });
+
+  keywordCloudElement.appendChild(keywordElement);
+
+  // Add a space after each keyword except the last one
+  if (index !== initialKeywords.length - 1) {
+    keywordCloudElement.appendChild(document.createTextNode(" "));
+  }
+});
+
+function handleKeywordClick(keyword) {
+  // Get the search input element
+  const searchInput = document.getElementById("searchInput");
+
+  // Set the search input value to the clicked keyword
+  searchInput.value = keyword;
+
+  // Perform the search
+  searchItems(keyword);
+}
+
+function searchItems(keyword) {
+  // Replace this with your own search logic
+  const filteredItems = initialKeywords.filter(item => item.toLowerCase().includes(keyword.toLowerCase()));
+  
+  // Display the filtered items
+  const resultsElement = document.getElementById("results");
+  resultsElement.innerHTML = "";
+  
+  filteredItems.forEach(item => {
+    const itemElement = document.createElement("li");
+    itemElement.textContent = item;
+    resultsElement.appendChild(itemElement);
+  });
+}
 
 
-  </script>
+
+        function createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement) {
+          const paginationElement = document.getElementById("pagination");
+          paginationElement.innerHTML = "";
+
+          const previousPageButton = document.createElement("button");
+          previousPageButton.innerHTML = "&#8678;"; // Left arrow Unicode
+          previousPageButton.disabled = currentPage === 1;
+          previousPageButton.addEventListener("click", () => {
+            currentPage = Math.max(1, currentPage - 1);
+            resultsElement.innerHTML = "";
+            displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+            createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+          });
+          paginationElement.appendChild(previousPageButton);
+
+          const firstPageButton = document.createElement("button");
+          firstPageButton.textContent = "1";
+          firstPageButton.disabled = currentPage === 1;
+          firstPageButton.addEventListener("click", () => {
+            currentPage = 1;
+            resultsElement.innerHTML = "";
+            displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+            createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+          });
+          paginationElement.appendChild(firstPageButton);
+
+          if (totalPages > 1 && currentPage > 20) {
+            const firstPageOfKeywordsButton = document.createElement("button");
+            firstPageOfKeywordsButton.textContent = "Page 1";
+            firstPageOfKeywordsButton.addEventListener("click", () => {
+              currentPage = 1;
+              resultsElement.innerHTML = "";
+              displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+              createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+            });
+            paginationElement.appendChild(firstPageOfKeywordsButton);
+          }
+
+          for (let i = 2; i <= totalPages; i++) {
+            const pageButton = document.createElement("button");
+            pageButton.textContent = i;
+            pageButton.disabled = i === currentPage;
+            pageButton.addEventListener("click", () => {
+              currentPage = i;
+              resultsElement.innerHTML = "";
+              displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+              createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+            });
+            paginationElement.appendChild(pageButton);
+          }
+
+          const nextPageButton = document.createElement("button");
+          nextPageButton.innerHTML = "&#8680;"; // Right arrow Unicode
+          nextPageButton.disabled = currentPage === totalPages;
+          nextPageButton.addEventListener("click", () => {
+            currentPage = Math.min(totalPages, currentPage + 1);
+            resultsElement.innerHTML = "";
+            displayResults(currentPage, itemsPerPage, filteredItems, resultsElement);
+            createPagination(totalPages, currentPage, itemsPerPage, filteredItems, resultsElement);
+          });
+          paginationElement.appendChild(nextPageButton);
+        }
+
+        // Identifiants d'accès à l'API Zotero
+        var apiKey = 'yQraJQogHA89BHu3VJBKXLha';
+        var userId = '9668586';
+        var collectionId = 'TEJRE3BW';
+        var limit1 = 25;
+        var start = 0;
+        var countItems = 0;
+
+        async function zoteroGetTags(startValue) {
+          let url = "https://en.wikipedia.org/w/api.php";
+          try {
+            var apiUrl = `https://api.zotero.org/users/${encodeURIComponent(userId)}/collections/${encodeURIComponent(collectionId)}/tags?format=json&limit=${limit}&start=${startValue}`;
+            const response = await fetch(apiUrl, {
+              headers: {
+                'Zotero-API-Version': '3',
+                'Zotero-API-Key': apiKey,
+              },
+            });
+            const data = await response.json();
+            // console.log('fetch', data);
+            countItems = 0;
+            var tagList = document.getElementById('tagList');
+            var myItemList = document.getElementById('myItemList');
+            var tagPromises = data.map(tag => {
+              var tagName = tag.tag;
+              var encodedTagName = encodeURIComponent(tagName);
+              var tagLink = document.createElement('a');
+              tagLink.textContent = tagName;
+              tagLink.style.marginRight = '10px';
+              tagLink.href = `javascript:void(0);`;
+              tagLink.addEventListener('click', function () {
+                // Appel à l'API Zotero pour récupérer les items associés à ce tag
+                fetch(`https://api.zotero.org/users/${encodeURIComponent(userId)}/collections/${encodeURIComponent(collectionId)}/items?tag=${encodedTagName}&format=json`, {
+                  headers: {
+                    'Zotero-API-Version': '3',
+                    'Zotero-API-Key': apiKey,
+                  },
+                })
+                  .then(response => response.json())
+                  .then(items => {
+                    // Effacer la liste des items précédents
+                    myItemList.innerHTML = '';
+
+                    // Afficher les nouveaux items dans la liste à puces
+                    items.forEach(item => {
+                      var itemElement = document.createElement('li');
+                      var itemLink = document.createElement('a');
+                      itemLink.textContent = item.data.title;
+                      itemLink.href = item.data.url;
+                      itemLink.target = '_blank'; // Ouvrir le lien dans un nouvel onglet
+                      itemElement.appendChild(itemLink);
+                      myItemList.appendChild(itemElement);
+                    });
+                  });
+              });
+              tagList.appendChild(tagLink);
+              countItems++;
+
+              // Retourne une promesse résolue pour que Promise.all fonctionne correctement
+              return Promise.resolve();
+            });
+
+            await Promise.all(tagPromises);
+
+            console.log('countItems', countItems + startValue);
+            if (countItems == limit) {
+              // console.log('countItems == limit');
+              return (startValue + countItems);
+            }
+            else {
+              // console.log('countItems != limit');
+              return null;
+            }
+          }
+          catch (error) {
+            console.error('Une erreur s\'est produite lors de la récupération des tags de la collection Zotero:', error);
+          }
+        }
+
+        async function repeatedAPICall(apiCall, startValue) {
+          const keys = [startValue];
+          const result = [];
+          data = null;
+
+          for (const callKey of keys) {
+            // console.log('callKey ', callKey);
+            const data = await apiCall(callKey);
+            // console.log('data ', data);
+            // result.push(data);
+            if (data !== undefined && data !== null) keys.push(data);
+          }
+
+          return result;
+        }
+
+        repeatedAPICall(zoteroGetTags, 0)
+          .then(result => console.log(result)); // use your callbacks here
+
+        var apiKey = 'yQraJQogHA89BHu3VJBKXLha';
+        var userId = '9668586';
+        var collectionId = 'TEJRE3BW';
+        var limit1 = 20;
+        var currentPage = 1;
+        var totalPages = 0;
+        var currentSearchQuery = '';
+
+        async function zoteroGetItems(startValue, searchQuery = '') {
+          try {
+            var apiUrl = `https://api.zotero.org/users/${encodeURIComponent(userId)}/collections/${encodeURIComponent(collectionId)}/items?format=json&limit=${limit}&start=${startValue}`;
+            if (searchQuery !== '') {
+              apiUrl += `&q=${encodeURIComponent(searchQuery)}`;
+            }
+            const response = await fetch(apiUrl, {
+              headers: {
+                'Zotero-API-Version': '3',
+                'Zotero-API-Key': apiKey,
+              },
+            });
+            const data = await response.json();
+
+            var myItemList1 = document.getElementById('myItemList1');
+            // Effacer la liste des items précédents
+            myItemList1.innerHTML = '';
+
+            data.forEach(item => {
+              var itemElement = document.createElement('li');
+              var itemLink = document.createElement('a');
+              itemLink.textContent = item.data.title;
+              itemLink.href = item.data.url;
+              itemLink.target = '_blank'; // Ouvrir le lien dans un nouvel onglet
+              itemElement.appendChild(itemLink);
+              myItemList1.appendChild(itemElement);
+            });
+
+            console.log('count', data.length);
+
+            return null;
+          } catch (error) {
+            console.error('Une erreur s\'est produite lors de la récupération des items de la collection Zotero:', error);
+          }
+        }
+
+        function searchItems() {
+          var searchQuery = document.getElementById('searchInput').value;
+          currentSearchQuery = searchQuery;
+          currentPage = 1;
+          loadItems();
+        }
+
+        function updatePage(action) {
+          if (action === 'previous') {
+            if (currentPage > 1) {
+              currentPage--;
+              loadItems();
+            }
+          } else if (action === 'next') {
+            if (currentPage < totalPages) {
+              currentPage++;
+              loadItems();
+            }
+          }
+        }
+
+        async function loadItems() {
+          var startValue = (currentPage - 1) * limit;
+          await zoteroGetItems(startValue, currentSearchQuery);
+          updatePagination();
+        }
+
+        function updatePagination() {
+  var currentPageElement = document.getElementById('currentPage');
+  currentPageElement.textContent = `Page ${currentPage} / ${totalPages}`;
+  currentPageElement.classList.add('page-number'); // Add the CSS class to set text color to black
+}
+
+
+        async function getTotalPages() {
+          try {
+            var apiUrl = `https://api.zotero.org/users/${encodeURIComponent(userId)}/collections/${encodeURIComponent(collectionId)}/items?format=json&limit=1`;
+            if (currentSearchQuery !== '') {
+              apiUrl += `&q=${encodeURIComponent(currentSearchQuery)}`;
+            }
+            const response = await fetch(apiUrl, {
+              headers: {
+                'Zotero-API-Version': '3',
+                'Zotero-API-Key': apiKey,
+              },
+            });
+            const data = await response.json();
+
+            var totalItems = parseInt(response.headers.get('Total-Results'));
+            totalPages = Math.ceil(totalItems / limit);
+          } catch (error) {
+            console.error('Une erreur s\'est produite lors de la récupération du nombre total de pages:', error);
+          }
+        }
+
+        // Appel initial pour récupérer le nombre total de pages
+        getTotalPages().then(() => {
+          loadItems();
+        });
+
+      </script>
 </body>
+
 </html>
